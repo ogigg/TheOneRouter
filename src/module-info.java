@@ -21,4 +21,5 @@ module hello {
 	requires ECLA;
 	requires java.desktop;
     requires junit;
+    requires java.logging;
 }

@@ -49,6 +49,9 @@ public class Message implements Comparable<Message> {
 	/** Application ID of the application that created the message */
 	private String	appID;
 
+	private String	type;
+
+
 	static {
 		reset();
 		DTNSim.registerForReset(Message.class.getCanonicalName());
@@ -80,6 +83,11 @@ public class Message implements Comparable<Message> {
 
 		Message.nextUniqueId++;
 		addNodeOnPath(from);
+	}
+
+	public boolean isRREQ() {
+		if(this.type == "RREQ") return true;
+		else return false;
 	}
 
 	/**
