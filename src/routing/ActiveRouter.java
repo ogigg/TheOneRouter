@@ -109,7 +109,7 @@ public abstract class ActiveRouter extends MessageRouter {
 		/* do a copy to avoid concurrent modification exceptions
 		 * (startTransfer may remove messages) */
 		ArrayList<Message> temp =
-			new ArrayList<Message>(this.getMessageCollection());
+				new ArrayList<Message>(this.getMessageCollection());
 		for (Message m : temp) {
 			if (other == m.getTo()) {
 				if (startTransfer(m, con) == RCV_OK) {
@@ -354,7 +354,7 @@ public abstract class ActiveRouter extends MessageRouter {
 		}
 
 		List<Tuple<Message, Connection>> forTuples =
-			new ArrayList<Tuple<Message, Connection>>();
+				new ArrayList<Tuple<Message, Connection>>();
 		for (Message m : getMessageCollection()) {
 			for (Connection con : getConnections()) {
 				DTNHost to = con.getOtherNode(getHost());
@@ -392,15 +392,15 @@ public abstract class ActiveRouter extends MessageRouter {
 		return null;
 	}
 
-	 /**
-	  * Goes trough the messages until the other node accepts one
-	  * for receiving (or doesn't accept any). If a transfer is started, the
-	  * connection is included in the list of sending connections.
-	  * @param con Connection trough which the messages are sent
-	  * @param messages A list of messages to try
-	  * @return The message whose transfer was started or null if no
-	  * transfer was started.
-	  */
+	/**
+	 * Goes trough the messages until the other node accepts one
+	 * for receiving (or doesn't accept any). If a transfer is started, the
+	 * connection is included in the list of sending connections.
+	 * @param con Connection trough which the messages are sent
+	 * @param messages A list of messages to try
+	 * @return The message whose transfer was started or null if no
+	 * transfer was started.
+	 */
 	protected Message tryAllMessages(Connection con, List<Message> messages) {
 		for (Message m : messages) {
 			int retVal = startTransfer(m, con);
@@ -427,7 +427,7 @@ public abstract class ActiveRouter extends MessageRouter {
 	 * accepted a message.
 	 */
 	protected Connection tryMessagesToConnections(List<Message> messages,
-			List<Connection> connections) {
+												  List<Connection> connections) {
 		for (int i=0, n=connections.size(); i<n; i++) {
 			Connection con = connections.get(i);
 			Message started = tryAllMessages(con, messages);
@@ -454,7 +454,7 @@ public abstract class ActiveRouter extends MessageRouter {
 		}
 
 		List<Message> messages =
-			new ArrayList<Message>(this.getMessageCollection());
+				new ArrayList<Message>(this.getMessageCollection());
 		this.sortByQueueMode(messages);
 
 		return tryMessagesToConnections(messages, connections);
@@ -477,7 +477,7 @@ public abstract class ActiveRouter extends MessageRouter {
 
 		@SuppressWarnings(value = "unchecked")
 		Tuple<Message, Connection> t =
-			tryMessagesForConnected(sortByQueueMode(getMessagesForConnected()));
+				tryMessagesForConnected(sortByQueueMode(getMessagesForConnected()));
 
 		if (t != null) {
 			return t.getValue(); // started transfer

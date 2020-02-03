@@ -20,6 +20,10 @@ public class RoutingTable {
         return findRouting(destination).GetNextNode();
     }
 
+    public RoutingTableEntryy GetNextNodeEntry(int destination) {
+        return findRouting(destination);
+    }
+
     public void AddToTable(RoutingTableEntryy routingTableEntryy){
         routingList.add(routingTableEntryy);
     }

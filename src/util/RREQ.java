@@ -1,6 +1,7 @@
 package util;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -15,9 +16,11 @@ public class RREQ {
     private int hopCount;
     private int TTL;
     public RREQ(int destination, int source, int TTL) {
+        this.previousNodes = new ArrayList<>();
         this.setSource(source);
         this.setDestination(destination);
-        this.setHopCount(hopCount);
+        this.setHopCount(0);
+        this.setTTL(TTL);
         this.ID= (int)(Math.random() * (10000));
         this.addToPreviousNodes(source);
     }
@@ -52,7 +55,7 @@ public class RREQ {
     }
 
     private void updateHopCount(){
-        this.setHopCount(this.getHopCount()-1);
+        this.setHopCount(this.getHopCount()+1);
     }
 
     public void setHopCount(int hopCount) {
@@ -63,6 +66,10 @@ public class RREQ {
 
     public int getID() {
         return ID;
+    }
+
+    public int getPreviousNode(){
+        return previousNodes.get(previousNodes.size() - 1); //get last element of previous nodes list
     }
 
     public List<Integer> getPreviousNodes() {
