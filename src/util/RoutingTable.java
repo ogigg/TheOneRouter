@@ -55,6 +55,6 @@ public class RoutingTable {
         this.routingList = routingList;
     }
     public void RemoveFromRoutingTable(int nodeId) {
-        this.routingList.remove(Integer.valueOf(nodeId)); //Removing of node with ID nodeId
+        this.routingList.removeIf(obj -> obj.nextNode == nodeId); //Removing of node with ID nodeId
     }
 }

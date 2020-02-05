@@ -18,3 +18,4 @@ doc/package-list
 
 # Project exclude paths
 /bin/
+/.idea/vcs.xml

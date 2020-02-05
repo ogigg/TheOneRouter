@@ -83,4 +83,20 @@ public class RREQ {
     public int getTTL() {
         return TTL;
     }
+
+    public boolean canHop(){
+        if(this.getTTL() > 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public String DEBUG_printNodes (){
+        String debugTemp = "";
+        for(int node : this.previousNodes){
+            debugTemp = debugTemp + node + ", ";
+        }
+        return debugTemp;
+    }
 }

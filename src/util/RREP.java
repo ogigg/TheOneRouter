@@ -17,6 +17,7 @@ public class RREP {
         this.setCurrentHop(TTL);
         this.ID= (int)(Math.random() * (10000));
         this.previousNodes = previousNodes;
+        this.setTTL(0);
     }
     public void update(int currentNode){
         this.addToPreviousNodes(currentNode);
@@ -65,6 +66,9 @@ public class RREP {
     public int getPreviousNode(){
         return previousNodes.get(previousNodes.size() - 1); //get last element of previous nodes list
     }
+    public int getFirstNode(){
+        return previousNodes.get(1); //get last element of previous nodes list
+    }
 
     public List<Integer> getPreviousNodes() {
         return previousNodes;
@@ -85,5 +89,12 @@ public class RREP {
         return this.currentHop = x;
     }
 
+    public String DEBUG_printNodes (){
+        String debugTemp = "";
+        for(int node : this.previousNodes){
+            debugTemp = debugTemp + node + ", ";
+        }
+        return debugTemp;
+    }
 
 }
